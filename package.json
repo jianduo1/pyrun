@@ -20,6 +20,7 @@
 		"python -m",
 		"run"
 	],
+    "icon": "icon.png",
     "main": "./ext.js",
     "contributes": {
         "commands": [
