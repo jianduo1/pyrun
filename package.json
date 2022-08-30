@@ -1,0 +1,77 @@
+{
+    "name": "run-python-m",
+    "publisher": "jack-duo",
+    "version": "0.0.1",
+    "engines": {
+        "vscode": "^1.47.3"
+    },
+    "activationEvents": [
+        "onLanguage:python",
+        "onCommand:extension.runPython",
+        "onStartupFinished"
+    ],
+	"categories": [
+		"Programming Languages",
+		"Other"
+	],
+	"keywords": [
+		"relative",
+		"module",
+		"python -m",
+		"run"
+	],
+    "main": "./ext.js",
+    "contributes": {
+        "commands": [
+            {
+                "command": "extension.runPython",
+                "title": "🐍 python -m",
+                "when": "resourceLangId == python"
+            }
+        ],
+		"keybindings": [
+			{
+				"command": "extension.runPython",
+				"key": "cmd+1"
+			},
+			{
+				"command": "extension.runPython",
+				"key": "cmd+Enter"
+			}
+        ],
+        "menus": {
+            "editor/context": [
+                {
+                    "command": "extension.runPython",
+                    "group": "navigation",
+                    "title": "Run Python",
+                    "when": "resourceLangId == python"
+                }
+            ],
+            "editor/title/context": [
+                {
+                    "command": "extension.runPython",
+                    "group": "navigation",
+                    "title": "Run Python",
+                    "when": "resourceLangId == python"
+                }
+            ],
+			"editor/title/run": [
+				{
+					"when": "resourceLangId == python",
+					"command": "extension.runPython",
+                    "title": "Run Python",
+					"group": "navigation"
+				}
+			],
+            "explorer/context": [
+                {
+                    "command": "extension.runPython",
+                    "group": "navigation",
+                    "title": "Run Python",
+                    "when": "resourceLangId == python"
+                }
+            ]
+        }
+    }
+}
