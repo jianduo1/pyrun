@@ -1,18 +1,33 @@
 # VSCode Python -m 极速运行增强插件
 
-
-<!-- 插件图标居中展示 -->
 <p align="center">
-  <img src="icon.png" alt="icon" width="120" />
-</p>
-
-让你的 Python 项目在 VSCode 中以最优雅、最专业的方式运行！
-
-<!-- 徽章居中展示 -->
-<p >
+  <a href="https://marketplace.visualstudio.com/items?itemName=jack-duo.run-python-m"><img src="https://img.shields.io/visual-studio-marketplace/v/jack-duo.run-python-m?label=VS%20Marketplace" alt="VS Marketplace"></a>
+  <a href="https://marketplace.visualstudio.com/items?itemName=jack-duo.run-python-m"><img src="https://img.shields.io/visual-studio-marketplace/d/jack-duo.run-python-m.svg?label=Installs" alt="Installs"></a>
   <a href="https://github.com/jianduo1/pyrun"><img src="https://img.shields.io/badge/version-0.1.0-blue.svg" alt="version"></a>
   <a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/License-MIT-green.svg" alt="MIT"></a>
 </p>
+
+<p align="center">
+  <a href="https://marketplace.visualstudio.com/items?itemName=jack-duo.run-python-m">
+    <img src="icon.png" alt="icon" width="120" />
+  </a>
+</p>
+
+<p align="center">
+  <b>让你的 Python 项目在 VSCode 中以最优雅、最专业的方式运行！</b>
+</p>
+
+---
+
+## 📦 插件信息
+
+- **市场主页**：[run-python-m on VSCode Marketplace](https://marketplace.visualstudio.com/items?itemName=jack-duo.run-python-m)
+- **安装命令**：
+  ```shell
+  ext install jack-duo.run-python-m
+  ```
+- **开源仓库**：[GitHub](https://github.com/jianduo1/pyrun)
+- **协议**：[MIT License](https://opensource.org/licenses/MIT)
 
 ---
 
