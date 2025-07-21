@@ -1,28 +1,59 @@
 {
-    "name": "run-python-m",
+    "name": "pyrun",
     "publisher": "jack-duo",
-    "version": "0.1.0",
+    "version": "0.1.1",
     "engines": {
-        "vscode": "^1.47.3"
+        "vscode": "^1.90.3"
     },
     "activationEvents": [
         "onLanguage:python",
         "onCommand:extension.runPython",
         "onStartupFinished"
     ],
-	"categories": [
-		"Programming Languages",
-		"Other"
-	],
-	"keywords": [
-		"relative",
-		"module",
-		"python -m",
-		"run"
-	],
+    "categories": [
+        "Programming Languages",
+        "Other"
+    ],
+    "keywords": [
+        "relative",
+        "module",
+        "python -m",
+        "run"
+    ],
     "icon": "icon.png",
     "main": "./ext.js",
     "contributes": {
+        "configuration": {
+            "type": "object",
+            "title": "Run Python -m",
+            "properties": {
+                "pyrun.pythonPath": {
+                    "type": "string",
+                    "default": "python3",
+                    "description": "自定义python命令路径（如python3、python、/usr/bin/python3等），用于运行python -m。"
+                },
+                "pyrun.enableContextMenu": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "是否在右键菜单中显示运行按钮。"
+                },
+                "pyrun.enableEditorButton": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "是否在编辑器标题栏显示运行按钮。"
+                },
+                "pyrun.enableRunMenu": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "是否在编辑器顶部运行菜单显示运行按钮。"
+                },
+                "pyrun.saveBeforeRun": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "运行前是否自动保存当前文件。"
+                }
+            }
+        },
         "commands": [
             {
                 "command": "extension.runPython",
@@ -30,15 +61,15 @@
                 "when": "resourceLangId == python"
             }
         ],
-		"keybindings": [
-			{
-				"command": "extension.runPython",
-				"key": "cmd+1"
-			},
-			{
-				"command": "extension.runPython",
-				"key": "cmd+Enter"
-			}
+        "keybindings": [
+            {
+                "command": "extension.runPython",
+                "key": "cmd+1"
+            },
+            {
+                "command": "extension.runPython",
+                "key": "cmd+Enter"
+            }
         ],
         "menus": {
             "editor/context": [
@@ -46,7 +77,7 @@
                     "command": "extension.runPython",
                     "group": "navigation",
                     "title": "Run Python",
-                    "when": "resourceLangId == python"
+                    "when": "resourceLangId == python && config.pyrun.enableContextMenu"
                 }
             ],
             "editor/title/context": [
@@ -54,56 +85,25 @@
                     "command": "extension.runPython",
                     "group": "navigation",
                     "title": "Run Python",
-                    "when": "resourceLangId == python"
+                    "when": "resourceLangId == python && config.pyrun.enableEditorButton"
                 }
             ],
-			"editor/title/run": [
-				{
-					"when": "resourceLangId == python",
-					"command": "extension.runPython",
+            "editor/title/run": [
+                {
+                    "command": "extension.runPython",
                     "title": "Run Python",
-					"group": "navigation"
-				}
-			],
+                    "group": "navigation",
+                    "when": "resourceLangId == python && config.pyrun.enableRunMenu"
+                }
+            ],
             "explorer/context": [
                 {
                     "command": "extension.runPython",
                     "group": "navigation",
                     "title": "Run Python",
-                    "when": "resourceLangId == python"
+                    "when": "resourceLangId == python && config.pyrun.enableContextMenu"
                 }
             ]
-        }
-    },
-    "configuration": {
-        "type": "object",
-        "title": "pyrun 配置",
-        "properties": {
-            "pyrun.pythonPath": {
-                "type": "string",
-                "default": "python3",
-                "description": "自定义python命令路径（如python3、python、/usr/bin/python3等），用于运行python -m。"
-            },
-            "pyrun.enableContextMenu": {
-                "type": "boolean",
-                "default": true,
-                "description": "是否在右键菜单中显示运行按钮。"
-            },
-            "pyrun.enableEditorButton": {
-                "type": "boolean",
-                "default": true,
-                "description": "是否在编辑器标题栏显示运行按钮。"
-            },
-            "pyrun.enableRunMenu": {
-                "type": "boolean",
-                "default": true,
-                "description": "是否在编辑器顶部运行菜单显示运行按钮。"
-            },
-            "pyrun.saveBeforeRun": {
-                "type": "boolean",
-                "default": true,
-                "description": "运行前是否自动保存当前文件。"
-            }
         }
     },
     "repository": {

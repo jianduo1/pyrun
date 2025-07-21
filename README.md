@@ -33,6 +33,7 @@
 
 ## 🚀 插件亮点
 - **一键以 `python -m` 方式运行当前脚本**，自动识别包路径，彻底解决相对导入、包内模块引用等常见难题。
+- **自动加入包层级目录到系统 PATH（多平台支持）**：运行时会自动将所有包层级目录（如 `a`、`a/b`、`a/b/c`）加入到系统 `PATH` 环境变量，已实现对 Windows、Linux、macOS 等多平台的兼容支持，便于多层级脚本查找和调用。
 - **完美支持多种运行场景**：右键菜单、快捷键、编辑器按钮，随时随地高效启动。
 - **智能兼容子目录**：无论你身处项目的哪个角落，均可一键运行，自动裁剪并推断模块路径。
 - **自定义 Python 解释器**：支持通过配置项灵活指定 Python 命令，满足多环境/多版本需求。
@@ -45,10 +46,10 @@
 ## 🖼️ 场景演示
 
 ### 解决 VSCode 中 Python 相对路径引用难题
-![](assets/vscode-relative-import-demo.png)
+![](https://raw.githubusercontent.com/jianduo1/pyrun/main/assets/vscode-relative-import-demo.png)
 
 ### 多种运行方式，极致便捷
-![](assets/vscode-run-methods-demo.png)
+![](https://raw.githubusercontent.com/jianduo1/pyrun/main/assets/vscode-run-methods-demo.png)
 
 ---
 
@@ -61,6 +62,10 @@
 | `pyrun.enableContextMenu` | boolean | `true` | 是否在右键菜单显示运行按钮。|
 | `pyrun.enableEditorButton` | boolean | `true` | 是否在编辑器标题栏显示运行按钮。|
 | `pyrun.enableRunMenu` | boolean | `true` | 是否在顶部运行菜单显示运行按钮。|
+
+**配置页面**
+
+![](https://raw.githubusercontent.com/jianduo1/pyrun/main/assets/setting.png)
 
 **配置示例：**
 ```json
