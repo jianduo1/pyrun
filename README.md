@@ -27,6 +27,12 @@
 ### 多种运行方式，极致便捷
 ![](https://raw.githubusercontent.com/jianduo1/pyrun/main/assets/vscode-run-methods-demo.png)
 
+### 文件夹移动前，自动更新导入引用
+![](https://raw.githubusercontent.com/jianduo1/pyrun/main/assets/move-before.png)
+
+### 文件夹移动后，自动更新导入引用
+![](https://raw.githubusercontent.com/jianduo1/pyrun/main/assets/move-after.png)
+
 ---
 
 ## ⚙️ 高级功能与配置
@@ -38,6 +44,7 @@
 | `pyrun.enableContextMenu` | boolean | `true` | 是否在右键菜单显示运行按钮。|
 | `pyrun.enableEditorButton` | boolean | `true` | 是否在编辑器标题栏显示运行按钮。|
 | `pyrun.enableRunMenu` | boolean | `true` | 是否在顶部运行菜单显示运行按钮。|
+| `pyrun.autoUpdateImports` | boolean | `true` | 移动Python文件时是否自动更新项目中所有相关的导入引用。|
 
 **配置页面**
 
@@ -50,7 +57,8 @@
   "pyrun.saveBeforeRun": true,
   "pyrun.enableContextMenu": true,
   "pyrun.enableEditorButton": false,
-  "pyrun.enableRunMenu": true
+  "pyrun.enableRunMenu": true,
+  "pyrun.autoUpdateImports": true
 }
 ```
 > 该配置将在运行前输出当前目录并自动保存当前文件，只在右键菜单和顶部运行菜单显示按钮。

@@ -1,7 +1,7 @@
 {
     "name": "run-python-m",
     "publisher": "jack-duo",
-    "version": "0.1.2",
+    "version": "0.2.0",
     "engines": {
         "vscode": "^1.90.3"
     },
@@ -51,6 +51,11 @@
                     "type": "boolean",
                     "default": true,
                     "description": "运行前是否自动保存当前文件。"
+                },
+                "pyrun.autoUpdateImports": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "移动Python文件时是否自动更新项目中所有相关的导入引用。"
                 }
             }
         },
@@ -59,6 +64,10 @@
                 "command": "extension.runPython",
                 "title": "🐍 python -m",
                 "when": "resourceLangId == python"
+            },
+            {
+                "command": "extension.testImportUpdate",
+                "title": "PyRun: 测试导入更新配置"
             }
         ],
         "keybindings": [
