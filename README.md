@@ -3,7 +3,6 @@
 <p align="center">
   <a href="https://marketplace.visualstudio.com/items?itemName=jack-duo.run-python-m"><img src="https://img.shields.io/visual-studio-marketplace/v/jack-duo.run-python-m?label=VS%20Marketplace" alt="VS Marketplace"></a>
   <a href="https://marketplace.visualstudio.com/items?itemName=jack-duo.run-python-m"><img src="https://img.shields.io/visual-studio-marketplace/d/jack-duo.run-python-m.svg?label=Installs" alt="Installs"></a>
-  <a href="https://github.com/jianduo1/pyrun"><img src="https://img.shields.io/badge/version-0.1.0-blue.svg" alt="version"></a>
   <a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/License-MIT-green.svg" alt="MIT"></a>
 </p>
 
@@ -27,11 +26,7 @@
 ### 多种运行方式，极致便捷
 ![](https://raw.githubusercontent.com/jianduo1/pyrun/main/assets/vscode-run-methods-demo.png)
 
-### 文件夹移动前，自动更新导入引用
-![](https://raw.githubusercontent.com/jianduo1/pyrun/main/assets/move-before.png)
 
-### 文件夹移动后，自动更新导入引用
-![](https://raw.githubusercontent.com/jianduo1/pyrun/main/assets/move-after.png)
 
 ---
 
@@ -44,7 +39,7 @@
 | `pyrun.enableContextMenu` | boolean | `true` | 是否在右键菜单显示运行按钮。|
 | `pyrun.enableEditorButton` | boolean | `true` | 是否在编辑器标题栏显示运行按钮。|
 | `pyrun.enableRunMenu` | boolean | `true` | 是否在顶部运行菜单显示运行按钮。|
-| `pyrun.autoUpdateImports` | boolean | `true` | 移动Python文件时是否自动更新项目中所有相关的导入引用。|
+
 
 **配置页面**
 
@@ -57,8 +52,7 @@
   "pyrun.saveBeforeRun": true,
   "pyrun.enableContextMenu": true,
   "pyrun.enableEditorButton": false,
-  "pyrun.enableRunMenu": true,
-  "pyrun.autoUpdateImports": true
+  "pyrun.enableRunMenu": true
 }
 ```
 > 该配置将在运行前输出当前目录并自动保存当前文件，只在右键菜单和顶部运行菜单显示按钮。

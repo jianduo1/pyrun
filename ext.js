@@ -7,7 +7,6 @@
 const vscode = require("vscode");
 const fs = require("fs");
 const path = require("path");
-const { ImportUpdateController } = require("./import-updater");
 
 function getPythonPath(uri, cwd) {
 
@@ -97,24 +96,10 @@ function activate(context) {
     let disposable = vscode.commands.registerCommand("extension.runPython", runPython);
     context.subscriptions.push(disposable);
 
-    // 注册测试配置命令
-    let testDisposable = vscode.commands.registerCommand("extension.testImportUpdate", () => {
-      const config = vscode.workspace.getConfiguration("pyrun");
-      const autoUpdateImports = config.get("autoUpdateImports", true);
-      
-      const message = `PyRun 配置状态:
-• 自动更新导入: ${autoUpdateImports ? '启用' : '禁用'}`;
-      
-      vscode.window.showInformationMessage(message, { modal: true });
-      console.log("PyRun 配置检查:", { autoUpdateImports });
-    });
-    context.subscriptions.push(testDisposable);
+
     
     // 初始化按钮显示状态
     updateButtonVisibility();
-    
-    // 初始化导入更新控制器
-    importUpdateController = new ImportUpdateController();
     
     // 监听配置变化
     context.subscriptions.push(
@@ -130,65 +115,9 @@ function activate(context) {
       })
     );
     
-    // 监听文件重命名/移动事件
-    context.subscriptions.push(
-      vscode.workspace.onDidRenameFiles(async (event) => {
-        try {
-          const config = vscode.workspace.getConfiguration("pyrun");
-          const autoUpdateImports = config.get("autoUpdateImports", true);
-          
-          // 检查功能是否开启
-          if (!autoUpdateImports) {
-            console.log('导入更新功能已关闭');
-            return;
-          }
-          
-          // 获取工作区根目录
-          if (!vscode.workspace.workspaceFolders || vscode.workspace.workspaceFolders.length === 0) {
-            console.log('没有打开的工作区');
-            return;
-          }
-          
-          const workspaceRoot = vscode.workspace.workspaceFolders[0].uri.fsPath;
-          
-          console.log(`文件重命名事件: 共 ${event.files.length} 个文件`);
-          
-          // 处理每个重命名的文件或文件夹
-          for (const file of event.files) {
-            const oldPath = file.oldUri.fsPath;
-            const newPath = file.newUri.fsPath;
-            
-            console.log(`路径变更: ${oldPath} -> ${newPath}`);
-              
-              // 立即处理，但在后台异步执行，添加错误捕获
-              process.nextTick(async () => {
-                try {
-                // 检查新路径是否为目录
-                const isNewPathDirectory = await importUpdateController.fileScanner.isDirectory(newPath);
-                
-                if (isNewPathDirectory) {
-                  console.log(`✅ 检测到文件夹移动，开始处理导入更新`);
-                  await importUpdateController.handleFolderMove(oldPath, newPath, workspaceRoot);
-                } else if (oldPath.endsWith('.py') && newPath.endsWith('.py')) {
-                  console.log(`✅ 检测到Python文件移动，开始处理导入更新`);
-                  await importUpdateController.handleFileMove(oldPath, newPath, workspaceRoot);
-                } else {
-                  console.log(`⏭️  跳过非Python文件/文件夹`);
-                }
-                } catch (error) {
-                console.error('处理文件/文件夹移动时出错:', error);
-                  vscode.window.showErrorMessage(`导入更新失败: ${error.message}`);
-                }
-              });
-          }
-        } catch (error) {
-          console.error('文件重命名事件处理失败:', error);
-          // 不抛出错误，避免影响VSCode
-        }
-      })
-    );
+    // 文件重命名/移动监听功能已迁移到 'Python Auto Update Import' 扩展
     
-    console.log('PyRun 扩展已激活，导入更新功能已启用');
+    console.log('PyRun 扩展已激活 (导入更新功能已迁移到独立扩展)');
     
   } catch (error) {
     console.error('PyRun 扩展激活失败:', error);
@@ -200,8 +129,7 @@ function activate(context) {
 exports.activate = activate;
 
 
-// 全局导入更新控制器实例
-let importUpdateController = null;
+// 导入更新控制器已迁移到独立扩展
 
 // VSCode 扩展停用函数
 function deactivate() {}
